@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 30rem;
+    background-color: #fff;
+    margin-top: 4.5rem;
+    &__logo {
+        display: grid;
+        place-items: center;
+        height: 120px;
+        font-size: 2.5rem;
+        font-family: 'Abril Fatface', serif;
+    }
+
+    &__menu {
+        position: relative;
+
+        &__item {
+            display: flex;
+            align-items: center;
+            place-content: flex-start;
+            padding: 1.25rem 5rem;
+            font-size: 1.25rem;
+            color: #555555;
+            transition: color 0.3s ease-in-out;
+            border: 0.5px solid black;
+            cursor: pointer;
+            &__active {
+                background-color: #308efe;
+                color: #fff;
+            }
+
+            &__icon {
+                margin-right: 1.25rem;
+                i {
+                    font-size: 1.75rem;
+                }
+            }
+
+            &__text {
+                font-size: 1.25rem;
+                font-family: "Kanit", monospace;
+            }
+        }
+        &__indicator {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: calc(100% - 40px);
+            border-radius: 10px;
+            border: 1px solid black;
+            background-color: #fff;
+            z-index: -1;
+            transform: translateX(-50%);
+            transition: 0.3s ease-in-out;
+        }
+    }
+}
