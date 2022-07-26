@@ -44,7 +44,6 @@ export function makeGridSnappable(
 
 export const addTable = (
   tableCount: number,
-  setTableCount: Function,
   canvi: fabric.Canvas | null | undefined) => {
   let rect = new fabric.Rect({
     left: 100,
@@ -72,7 +71,6 @@ export const addTable = (
 
   canvi?.add(group);
   canvi?.renderAll();
-  setTableCount(tableCount + 1);
 };
 
 export const addSeat = (canvi: fabric.Canvas | null | undefined) => {
@@ -110,6 +108,17 @@ export const ungroup = (canvi: fabric.Canvas | null | undefined) => {
         canvi.add(obj);
       });
     });
+};
+
+
+export const saveCanvas = (canvi: fabric.Canvas | null | undefined) => {
+  console.log(canvi?.toDataURL())
+};
+export const deleteActiveObjects = (canvi: fabric.Canvas | null | undefined) => {
+  canvi?.getActiveObjects().forEach((i) => {
+    canvi.remove(i);
+  });
+  canvi?.renderAll();
 };
 
 export function deleteAndBackspaceHandler(canvas: fabric.Canvas) {

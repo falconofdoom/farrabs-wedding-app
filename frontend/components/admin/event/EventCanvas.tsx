@@ -7,6 +7,8 @@ import {
   addTable,
   groupSeatAndTable,
   ungroup,
+  saveCanvas,
+  deleteActiveObjects,
   deleteAndBackspaceHandler,
 } from "./EventCanvasHelper";
 
@@ -35,7 +37,8 @@ export default function EventCanvas(props: Props) {
 
   useEffect(() => {
     if (props.currentAction.startsWith("addTable")) {
-      addTable(tableCount, setTableCount, canvas);
+      addTable(tableCount, canvas);
+      setTableCount(tableCount + 1);
     }
 
     if (props.currentAction.startsWith("addSeat")) {
@@ -49,6 +52,15 @@ export default function EventCanvas(props: Props) {
     if (props.currentAction.startsWith("ungroup")) {
       ungroup(canvas);
     }
+
+    if (props.currentAction.startsWith("save")) {
+      saveCanvas(canvas);
+    }
+
+    if (props.currentAction.startsWith("delete")) {
+      deleteActiveObjects(canvas);
+    }
+
   }, [props.currentAction]);
 
   const initCanvas = () => {
@@ -65,19 +77,6 @@ export default function EventCanvas(props: Props) {
 
   return (
     <div>
-      <h1>Event Canvas</h1>
-      <button
-        onClick={(e) =>
-          addTable(tableCount, setTableCount, canvas)
-        }
-      >
-        Add Table
-      </button>
-      <button onClick={(e) => addSeat(canvas || undefined)}>Add Seat</button>
-      <button onClick={(e) => groupSeatAndTable(canvas || undefined)}>
-        Group Seat and Table
-      </button>
-      <button onClick={(e) => ungroup(canvas || undefined)}>Ungroup</button>
       <canvas
         id="canvas"
         style={{ border: "1px solid #000" }}

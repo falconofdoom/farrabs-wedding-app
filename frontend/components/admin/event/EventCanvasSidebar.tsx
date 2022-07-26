@@ -28,6 +28,16 @@ const sidebarNavItems = [
     icon: <i className="bx bx-grid-alt"></i>,
     action: "ungroup",
   },
+  {
+    display: "Save",
+    icon: <i className="bx bx-save"></i>,
+    action: "save",
+  },  
+  {
+    display: "Delete",
+    icon: <i className="bx bx-trash"></i>,
+    action: "delete",
+  },
 ];
 
 const EventCanvasSidebar = (props: Props) => {
